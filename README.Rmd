@@ -1,0 +1,9 @@
+---
+output: github_document
+---
+
+My life in months, inspired by [Isabella Benabaye](https://isabella-b.com/blog/my-life-in-months/)!
+
+```{r echo = FALSE}
+knitr::include_graphics("life_in_months.png")
+```
