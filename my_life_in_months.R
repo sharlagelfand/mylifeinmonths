@@ -49,7 +49,7 @@ life_in_months_base <- life_data %>%
   # scale_y_continuous(breaks = c(1, 4, 7, 10), labels = c("June", "September", "December", "March")) +
   scale_x_continuous(limits = c(-0.5, 37.5)) +
   scale_y_continuous(limits = c(-2.5, 14.5)) +
-  scale_fill_manual(values = c("#fbbcb8", "#bfdff6", "#9acbf0", "#9fabe8", "#a3e3c4", "#75d2a6", "#00c290", "#beaef5")) +
+  scale_fill_manual(values = c("#fbbcb8", "#bfdff6", "#9acbf0", "#78baeb", "#a3e3c4", "#75d2a6", "#00c290", "#beaef5")) +
   labs(y = NULL, x = NULL) +
   theme_ipsum(grid = "") +
   theme(
@@ -75,7 +75,7 @@ life_in_months_initial_annotations <- life_in_months_base +
   geom_curve(aes(x = 0, xend = 1, y = 14, yend = 12), arrow = arrow(length = unit(0.0175, "npc")), colour = initial_annotations_colour) +
   annotate("text", x = 0.5, y = 0, label = "age", family = initial_annotations_font_family, fontface = "italic", hjust = 0, size = annotation_base_size, colour = initial_annotations_colour) +
   geom_segment(aes(x = 2, xend = 4, y = 0, yend = 0), arrow = arrow(length = unit(0.0175, "npc")), colour = initial_annotations_colour) +
-  annotate("text", x = 31, y = 6.5, label = "my life\nin months", hjust = 0, family = "Azo Sans", fontface = "bold", lineheight = 1, size = annotation_base_size * 2.5)
+  annotate("text", x = 31.25, y = 6.5, label = "my life\nin months", hjust = 0, family = "Azo Sans", fontface = "bold", lineheight = 1, size = annotation_base_size * 2.5)
 
 role_annotations_font_family <- "Cedarville Cursive"
 
@@ -88,8 +88,8 @@ life_in_months_role_annotations <- life_in_months_initial_annotations +
   annotate("text", x = 19, y = role_annotations_y - 1.25, label = "undergrad", family = role_annotations_font_family, size = roles_size, colour = "#6eb4e9") +
   annotate("text", x = 19, y = role_annotations_y - 2.25, label = "(stats)", family = role_annotations_font_family, size = roles_size * 0.75, colour = "#6eb4e9") +
   geom_curve(aes(x = 21.5, xend = 22, y = -1.5, yend = 0.35), curvature = 0.4, arrow = arrow(length = unit(0.0175, "npc")), colour = "#6eb4e9") +
-  annotate("text", x = 24.25, y = role_annotations_y, label = "masters", family = role_annotations_font_family, size = roles_size, colour = "#7587de") +
-  annotate("text", x = 24.25, y = role_annotations_y - 1, label = "(also stats)", family = role_annotations_font_family, size = roles_size * 0.75, colour = "#7587de") +
+  annotate("text", x = 24.25, y = role_annotations_y, label = "masters", family = role_annotations_font_family, size = roles_size, colour = "#4ca3e4") +
+  annotate("text", x = 24.25, y = role_annotations_y - 1, label = "(also stats)", family = role_annotations_font_family, size = roles_size * 0.75, colour = "#4ca3e4") +
   annotate("text", x = 27.5, y = role_annotations_y - 1.5, label = "data\nanalyst", family = role_annotations_font_family, lineheight = annotation_lineheight - 0.25, size = roles_size, colour = "#4fc58d") +
   geom_curve(aes(x = 26.5, xend = 26, y = -1.15, yend = 0.35), curvature = -0.2, arrow = arrow(length = unit(0.0175, "npc")), colour = "#4fc58d") +
   geom_curve(aes(x = 27.5, xend = 28, y = -1, yend = 0.35), curvature = 0.3, arrow = arrow(length = unit(0.0175, "npc")), colour = "#4fc58d") +
