@@ -26,8 +26,8 @@ life_data <- expand_grid(
   group_by(year) %>%
   mutate(month_number = row_number()) %>%
   ungroup() %>%
-  filter(!(year == birth_year & month_number < birth_month)) # %>%
-# filter(!(year == current_year & month_number > current_month)) # If you want to exclude after the current month - I didn't, because it looked weird!
+  filter(!(year == birth_year & month_number < birth_month)) %>%
+  filter(!(year == current_year & month_number > current_month)) # If you want to exclude after the current month - I didn't, because it looked weird!
 
 # Add "eras" to be coloured
 # "era" text can be used for annotation, and the fill colour will colour the waffle chart
@@ -55,6 +55,22 @@ life_data <- life_data %>%
   left_join(eras, by = "year_month") %>%
   fill(era, fill_colour, text_colour) %>%
   mutate(fill_colour = fct_inorder(fill_colour))
+
+# Add a plot_month and plot_year
+# If the month number is >= birth month, then keep as is
+# If the month number is less than birth month, then make the plot month number 12 + the month
+# And make the plot year the year - 1
+
+life_data <- life_data %>%
+  mutate(plot_month = case_when(month_number >= birth_month ~ month_number,
+                                month_number < birth_month ~ 12L + month_number),
+         plot_year = case_when(month_number >= birth_month ~ year,
+                               month_number < birth_month ~ year - 1L))
+
+# Write to JSON for making in d3
+
+life_data_json <- jsonlite::toJSON(life_data)
+jsonlite::write_json(life_data_json, "life_data.json")
 
 # Split life data into list based on era for using labels/colours later on
 
